@@ -31,14 +31,12 @@ router.post("/createpub", upload.single('image'), function (req, res, next) {
       if (err) {
         return next(err.message);
       } else {
-        return res.json({
-          valid: true,
-        });
+        res.status(200).send({ok: false, status:200});
       }
     });
   });
 
-/*   router.get("/reqallpub", function (req, res, next) {
+  router.get("/reqallpub", function (req, res, next) {
     Publication.find().exec(function (err, obj) {
       if (obj === null) {
         return res.json("NoArticles");
@@ -46,6 +44,6 @@ router.post("/createpub", upload.single('image'), function (req, res, next) {
         return res.json(obj);
       }
     });
-  }); */
+  }); 
 
 module.exports = router;
