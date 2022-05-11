@@ -80,7 +80,7 @@ export default {
                     formData.append('title', this.title)
                     formData.append('description', this.description)
                     formData.append('image', this.image)
-                    const response = await axios.post('/api/publication', formData, {
+                    const response = await axios.post('/api/publication/createpub', formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data'
                         }
