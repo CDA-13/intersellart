@@ -3,7 +3,7 @@ const app = express();
 const port = 3001
 const cors = require('cors');
 const path = require('path');
-const db = require('database');
+const db = require('./database.js');
 
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
