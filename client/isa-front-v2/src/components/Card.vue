@@ -22,6 +22,9 @@ export default {
                 picture: ""
             }
         }
+    },
+    methods: {
+        
     }
 }
 </script>
