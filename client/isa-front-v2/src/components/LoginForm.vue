@@ -2,7 +2,7 @@
   <div class="container">
     <div class="card mt-5">
       <div class="card-body">
-        <form>
+        <form @submit.prevent="onSubmit">
           <div class="row">
             <div class="col-12 col-md-6">
               <div class="form-floating mb-3">
@@ -11,6 +11,7 @@
                   class="form-control"
                   id="userEmail"
                   placeholder="email"
+                  v-model="email"
                 />
                 <label for="userEmail">Email</label>
                 <a href="#" class="btn btn-link"> S’inscrire</a>
@@ -23,6 +24,7 @@
                   class="form-control"
                   id="userPassword"
                   placeholder="password"
+                  v-model="password"
                 />
                 <label for="userEmail">Mot de passe</label>
                 <a href="#" class="btn btn-link">Mot de passe oulié ?</a>
@@ -46,21 +48,29 @@
 
 <script>
 export default {
-  name: "LoginForm",
   data() {
     return {
-      event: {
-        id: 5928101,
-        category: "animal welfare",
-        title: "Cat Adoption Day",
-        description: "Find your new feline friend at this event.",
-        location: "Meow Town",
-        date: "January 28, 2022",
-        time: "12:00",
-        petsAllowed: true,
-        organizer: "Kat Laydee",
-      },
+      email: "",
+      pseudo: "",
+      name: "LoginForm",
     }
   },
+  methods: {
+    onSubmit(){
+      let formData = new FormData()
+      formData.append("pseudo", this.pseudo)
+      formData.append("email", this.email)
+      const response = await axios.post("/api/user/login", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      if (response.status != 500) {
+        alert(response.message)
+      } else {
+        alert("Votre êtes connecté!")
+      }
+    }
+  }
 }
 </script>
