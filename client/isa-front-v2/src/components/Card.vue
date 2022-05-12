@@ -5,7 +5,7 @@
         <img v-bind:src="'data:image/jpeg;base64,'+imageBytes"  />
         <div class="card-body">
             <h5 class="card-title">{{ post.title }} Title</h5>
-            <p class="card-text">{{ post.description }} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt nisl ipsum, et malesuada nunc dignissim facilisis. Pellentesque pharetra vulputate diam non euismod. </p>
+            <p class="card-text">{{ post.description }}</p>
             <router-link to="/"  class="btn btn-secondary">Voir l'oeuvre</router-link>
         </div>
     </div>   
