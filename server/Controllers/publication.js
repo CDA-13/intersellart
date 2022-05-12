@@ -22,11 +22,12 @@ router.post("/createpub", upload.single('image'), function (req, res, next) {
       title: req.body.title,
       description: req.body.description,
       picture: {
-        data: req.file.filename,
+        data: "http://localhost:3001/" + 'uploads/' + req.file.filename,
         contentType: 'image/png'
     } 
+    
     });
-  
+    console.log(process.cwd() + '/public/uploads/' + req.file.filename)
     publication.save(function (err, obj) {
       if (err) {
         return next(err.message);
