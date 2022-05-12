@@ -1,5 +1,8 @@
 import { createWebHistory, createRouter } from "vue-router"
 import Home from "../views/Home.vue"
+import PublicationCreate from "./views/publication/PublicationCreate.vue"
+import LoginForm from "./components/LoginForm.vue"
+import UserForm from "./components/UserForm.vue"
 
 const routes = [
   {
@@ -10,7 +13,7 @@ const routes = [
   {
     path: "/newPublication",
     name: "New Publication",
-    component: FormPublication,
+    component: PublicationCreate,
   },
   {
     path: "/login",
