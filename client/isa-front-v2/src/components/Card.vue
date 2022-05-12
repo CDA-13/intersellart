@@ -1,10 +1,12 @@
 <template>
-    <div class="card m-3" style="width: 18rem;">
-        <img class="card-img-top" src="../assets/img/imgisa1.jpg" alt="Card image cap">
+    <div class="card m-3" style="width: 18rem;"
+         v-for="post in posts" :key="post.id"
+    >
+        <img v-bind:src="'data:image/jpeg;base64,'+imageBytes"  />
         <div class="card-body">
             <h5 class="card-title">{{ post.title }} Title</h5>
             <p class="card-text">{{ post.description }} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt nisl ipsum, et malesuada nunc dignissim facilisis. Pellentesque pharetra vulputate diam non euismod. </p>
-            <a href="#" class="btn btn-secondary">Voir l'oeuvre</a>
+            <router-link to="/"  class="btn btn-secondary">Voir l'oeuvre</router-link>
         </div>
     </div>   
 </template>
@@ -16,15 +18,23 @@ export default {
     name: "Card",
     data() {
         return {
-            post: {
+            posts: {
                 title: "",
                 description: "",
-                picture: ""
+                image: ""
             }
         }
     },
-    methods: {
-        
-    }
+    mounted() {
+    axios
+      .get(`http://localhost:3001/api/publication/reqallpub`)
+      .then((response) => {
+        this.posts = response.data;
+      })
+
+      .catch((error) => {
+        console.log(error);
+      });
+  },
 }
 </script>
