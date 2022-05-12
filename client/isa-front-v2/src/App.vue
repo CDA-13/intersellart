@@ -1,14 +1,32 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
-import PublicationCreate from './views/publication/PublicationCreate.vue'
-</script>
-
 <template>
-  <PublicationCreate />
+  <div id="app">
+    <HeaderLayout />
+    <router-view />
+    <PublicationCreate />
+    <FooterLayout />
+  </div>
 </template>
 
-<style>
+<script>
+import HeaderLayout from "./components/HeaderLayout.vue";
+import FooterLayout from "./components/FooterLayout.vue";
+import PublicationCreate from './views/publication/PublicationCreate.vue'
 
+export default {
+  name: "App",
+  components: {
+    HeaderLayout,
+    PublicationCreate,
+    FooterLayout,
+  },
+  data() {
+    
+  }
+};
+</script>
+
+<style>
+#app  {
+  overflow-x: hidden;
+}
 </style>
