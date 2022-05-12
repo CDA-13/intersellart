@@ -22,7 +22,7 @@ router.post("/createpub", upload.single('image'), function (req, res, next) {
       title: req.body.title,
       description: req.body.description,
       picture: {
-        data: fs.readFileSync(process.cwd() + '/public/uploads/' + req.file.filename),
+        data: req.file.filename,
         contentType: 'image/png'
     } 
     });
